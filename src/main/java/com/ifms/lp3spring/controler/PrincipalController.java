@@ -8,7 +8,11 @@ public class PrincipalController {
     
     @GetMapping("home")
     public String getMethodName() {
-        return "Principal";
+        return "principal";
     }
     
+    @GetMapping("/")
+    public String chamadaLayout() {
+        return "layout/layoutprincipal";
+    }
 }
