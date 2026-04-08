@@ -1,0 +1,43 @@
+package com.ifms.lp3spring.model;
+
+import java.util.Date;
+
+import org.springframework.format.annotation.DateTimeFormat;
+import jakarta.persistence.Entity;
+import jakarta.persistence.PrimaryKeyJoinColumn;
+import jakarta.persistence.Table;
+
+@Entity
+@PrimaryKeyJoinColumn(name="idPessoa")
+@Table(name = "professor")
+public class ProfessorModel extends PessoaModel {
+    private int siape;
+    @DateTimeFormat(pattern = "yyyy-MM-dd")
+    private Date dataPosse;
+
+    public ProfessorModel() {
+    }
+
+    public ProfessorModel(String nome, Long cpf, Date dataNascimento, int siape, Date dataPosse) {
+        super(nome, cpf, dataNascimento);
+        this.siape = siape;
+        this.dataPosse = dataPosse;
+    }
+
+    public int getSiape() {
+        return siape;
+    }
+
+    public void setSiape(int siape) {
+        this.siape = siape;
+    }
+
+    public Date getDataPosse() {
+        return dataPosse;
+    }
+
+    public void setDataPosse(Date dataPosse) {
+        this.dataPosse = dataPosse;
+    }
+
+}

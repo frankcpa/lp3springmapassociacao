@@ -1,0 +1,51 @@
+package com.ifms.lp3spring.model;
+
+import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.Id;
+import jakarta.persistence.Table;
+
+@Entity
+@Table(name = "disciplina")
+public class DisciplinaModel {
+    @Id
+    @GeneratedValue
+    private Long idDisciplina;
+    private String nome;
+    private String descricao;
+    private int cargaHoraria;
+
+    public DisciplinaModel() {
+    }
+
+    public DisciplinaModel(String nome, String descricao, int cargaHoraria) {
+        this.nome = nome;
+        this.descricao = descricao;
+        this.cargaHoraria = cargaHoraria;
+    }
+
+    public String getNome() {
+        return nome;
+    }
+
+    public void setNome(String nome) {
+        this.nome = nome;
+    }
+
+    public String getDescricao() {
+        return descricao;
+    }
+
+    public void setDescricao(String descricao) {
+        this.descricao = descricao;
+    }
+
+    public int getCargaHoraria() {
+        return cargaHoraria;
+    }
+
+    public void setCargaHoraria(int cargaHoraria) {
+        this.cargaHoraria = cargaHoraria;
+    }
+
+}
