@@ -1,9 +1,14 @@
 package com.ifms.lp3spring.model;
 
 import java.util.Date;
+import java.util.List;
 
 import org.springframework.format.annotation.DateTimeFormat;
+
+import jakarta.persistence.CascadeType;
 import jakarta.persistence.Entity;
+import jakarta.persistence.FetchType;
+import jakarta.persistence.OneToMany;
 import jakarta.persistence.PrimaryKeyJoinColumn;
 import jakarta.persistence.Table;
 
@@ -14,6 +19,8 @@ public class ProfessorModel extends PessoaModel {
     private int siape;
     @DateTimeFormat(pattern = "yyyy-MM-dd")
     private Date dataPosse;
+    @OneToMany(mappedBy="professor", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+    private List<DisciplinaModel> disciplinas;
 
     public ProfessorModel() {
     }
@@ -38,6 +45,14 @@ public class ProfessorModel extends PessoaModel {
 
     public void setDataPosse(Date dataPosse) {
         this.dataPosse = dataPosse;
+    }
+
+    public List<DisciplinaModel> getDisciplinas() {
+        return disciplinas;
+    }
+
+    public void setDisciplinas(List<DisciplinaModel> disciplinas) {
+        this.disciplinas = disciplinas;
     }
 
 }

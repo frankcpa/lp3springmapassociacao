@@ -15,16 +15,16 @@
             </div>
         </div>
 
-        <form>
+        <form action="/salvarprofessor" method="post">
             <div class="row mb-3">
                 <div class="col-md-8">
                     <label for="inputnome" class="form-label">Nome</label>
-                    <input type="text" class="form-control" id="inputnome" aria-describedby="nomeHelp">
+                    <input type="text" class="form-control" id="inputnome" name="nome" aria-describedby="nomeHelp">
                     <div id="nomeHelp" class="form-text">We'll never share your name with anyone else.</div>
                 </div>
                 <div class="col-md-4">
                     <label for="inputcpf" class="form-label">CPF</label>
-                    <input type="text" class="form-control" id="inputcpf" aria-describedby="cpfHelp">
+                    <input type="text" class="form-control" id="inputcpf" name="cpf" aria-describedby="cpfHelp">
                     <div id="cpfHelp" class="form-text">We'll never share your CPF with anyone else.</div>
                 </div>
             </div>
@@ -32,18 +32,18 @@
                 <div class="col-md-4">
                     <label for="inputdataNascimento" class="form-label">Data de Nascimento</label>
                     <input type="date" class="form-control" id="inputdataNascimento"
-                        aria-describedby="dataNascimentoHelp">
+                        name="dataNascimento" aria-describedby="dataNascimentoHelp">
                     <div id="dataNascimentoHelp" class="form-text">We'll never share your date of birth with anyone
                         else.</div>
                 </div>
                 <div class="col-md-4">
                     <label for="inputsiape" class="form-label">SIAPE</label>
-                    <input type="text" class="form-control" id="inputsiape" aria-describedby="siapeHelp">
+                    <input type="text" class="form-control" id="inputsiape" name="siape" aria-describedby="siapeHelp">
                     <div id="siapeHelp" class="form-text">We'll never share your SIAPE with anyone else.</div>
                 </div>
                 <div class="col-md-4">
                     <label for="inputdataPosse" class="form-label">Data de Posse</label>
-                    <input type="date" class="form-control" id="inputdataPosse" aria-describedby="dataPosseHelp">
+                    <input type="date" class="form-control" id="inputdataPosse" name="dataPosse" aria-describedby="dataPosseHelp">
                     <div id="dataPosseHelp" class="form-text">We'll never share your date of appointment with anyone
                         else.</div>
                 </div>
