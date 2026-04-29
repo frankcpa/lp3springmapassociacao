@@ -15,37 +15,46 @@
             </div>
         </div>
 
-        <form action="/salvarprofessor" method="post">
+        <form action="/salvarprofessor" method="post" th:object="${professor}">
             <div class="row mb-3">
                 <div class="col-md-8">
-                    <label for="inputnome" class="form-label">Nome</label>
-                    <input type="text" class="form-control" id="inputnome" name="nome" aria-describedby="nomeHelp">
-                    <div id="nomeHelp" class="form-text">We'll never share your name with anyone else.</div>
+                    <label for="nome" class="form-label">Nome</label>
+                    <input type="text" class="form-control" th:field="*{nome}">
+                    <ul>
+                        <li th:each="error : ${#fields.errors('nome')}" th:text="${error}" class="text-danger"></li>
+                    </ul>
                 </div>
                 <div class="col-md-4">
-                    <label for="inputcpf" class="form-label">CPF</label>
-                    <input type="text" class="form-control" id="inputcpf" name="cpf" aria-describedby="cpfHelp">
-                    <div id="cpfHelp" class="form-text">We'll never share your CPF with anyone else.</div>
+                    <label for="cpf" class="form-label">CPF</label>
+                    <input type="text" class="form-control" th:field="*{cpf}" aria-describedby="cpfHelp">
+                    <ul>
+                        <li th:each="error : ${#fields.errors('cpf')}" th:text="${error}" class="text-danger"></li>
+                    </ul>
+                    <div id="cpfHelp" class="form-text">Nunca compartilhe seu CPF com ninguém.</div>
                 </div>
             </div>
             <div class="row mb-3">
                 <div class="col-md-4">
-                    <label for="inputdataNascimento" class="form-label">Data de Nascimento</label>
-                    <input type="date" class="form-control" id="inputdataNascimento"
-                        name="dataNascimento" aria-describedby="dataNascimentoHelp">
-                    <div id="dataNascimentoHelp" class="form-text">We'll never share your date of birth with anyone
-                        else.</div>
+                    <label for="dataNascimento" class="form-label">Data de Nascimento</label>
+                    <input type="date" class="form-control" th:field="*{dataNascimento}">
+                    <ul>
+                        <li th:each="error : ${#fields.errors('dataNascimento')}" th:text="${error}" class="text-danger"></li>
+                    </ul>
                 </div>
                 <div class="col-md-4">
-                    <label for="inputsiape" class="form-label">SIAPE</label>
-                    <input type="text" class="form-control" id="inputsiape" name="siape" aria-describedby="siapeHelp">
-                    <div id="siapeHelp" class="form-text">We'll never share your SIAPE with anyone else.</div>
+                    <label for="siape" class="form-label">SIAPE</label>
+                    <input type="text" class="form-control" th:field="*{siape}" aria-describedby="siapeHelp">
+                    <ul>
+                        <li th:each="error : ${#fields.errors('siape')}" th:text="${error}" class="text-danger"></li>
+                    </ul>
+                    <div id="siapeHelp" class="form-text">Preencimento obrigatório.</div>
                 </div>
                 <div class="col-md-4">
-                    <label for="inputdataPosse" class="form-label">Data de Posse</label>
-                    <input type="date" class="form-control" id="inputdataPosse" name="dataPosse" aria-describedby="dataPosseHelp">
-                    <div id="dataPosseHelp" class="form-text">We'll never share your date of appointment with anyone
-                        else.</div>
+                    <label for="dataPosse" class="form-label">Data de Posse</label>
+                    <input type="date" class="form-control" th:field="*{dataPosse}">
+                    <ul>
+                        <li th:each="error : ${#fields.errors('dataPosse')}" th:text="${error}" class="text-danger"></li>
+                    </ul>
                 </div>
                 <div class="col-md-12 mt-4">
                     <button type="submit" class="btn btn-primary">Submit</button>

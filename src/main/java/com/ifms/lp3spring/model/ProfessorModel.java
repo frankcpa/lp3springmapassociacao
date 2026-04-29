@@ -5,18 +5,22 @@ import java.util.List;
 
 import org.springframework.format.annotation.DateTimeFormat;
 
+import groovyjarjarantlr4.v4.runtime.misc.NotNull;
 import jakarta.persistence.CascadeType;
 import jakarta.persistence.Entity;
 import jakarta.persistence.FetchType;
 import jakarta.persistence.OneToMany;
 import jakarta.persistence.PrimaryKeyJoinColumn;
 import jakarta.persistence.Table;
+import jakarta.validation.constraints.PastOrPresent;
 
 @Entity
 @PrimaryKeyJoinColumn(name="idPessoa")
 @Table(name = "professor")
 public class ProfessorModel extends PessoaModel {
     private int siape;
+    @PastOrPresent
+    @NotNull
     @DateTimeFormat(pattern = "yyyy-MM-dd")
     private Date dataPosse;
     @OneToMany(mappedBy="professor", fetch = FetchType.LAZY, cascade = CascadeType.ALL)

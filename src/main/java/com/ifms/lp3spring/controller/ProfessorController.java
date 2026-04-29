@@ -2,25 +2,35 @@ package com.ifms.lp3spring.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.servlet.ModelAndView;
+
 import com.ifms.lp3spring.Service.ProfessorService;
 import com.ifms.lp3spring.model.ProfessorModel;
-import org.springframework.web.bind.annotation.PostMapping;
+
+import jakarta.validation.Valid;
 
 @Controller
 public class ProfessorController {
     @Autowired
     private ProfessorService professorService;
 
-    @GetMapping("salvarprofessor")
-    public String getSalvar() {
-        return "professor/salvarprofessor";
+    @GetMapping("/salvarprofessor")
+    public ModelAndView getSalvar() {
+        return new ModelAndView("professor/salvarprofessor", "professor", new ProfessorModel());
     }
     
-    @PostMapping("salvarprofessor")
-    public String postSalvar(ProfessorModel professor) {
+    @PostMapping("/salvarprofessor")
+    public String postSalvar(@Valid @ModelAttribute("professor") ProfessorModel professor, BindingResult result) {
+        if (result.hasErrors()) {
+            return "professor/salvarprofessor";
+        }
+        
         professorService.inserir(professor);
-        return "professor/salvarprofessor";
+        return "redirect:/salvarprofessor";
     }  
 
     public ProfessorService getProfessorService() {
