@@ -1,5 +1,7 @@
 package com.ifms.lp3spring.model;
 
+import java.util.List;
+
 import org.hibernate.annotations.Fetch;
 import org.hibernate.annotations.FetchMode;
 
@@ -8,6 +10,7 @@ import jakarta.persistence.FetchType;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
+import jakarta.persistence.ManyToMany;
 import jakarta.persistence.ManyToOne;
 import jakarta.persistence.Table;
 
@@ -20,10 +23,14 @@ public class DisciplinaModel {
     private String nome;
     private String descricao;
     private int cargaHoraria;
+    
     @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name="id_professor")
     @Fetch(FetchMode.JOIN)
     private ProfessorModel professor;
+
+    @ManyToMany(mappedBy = "disciplinas")
+    private List<AlunoModel> alunos;
 
     public DisciplinaModel() {
     }
@@ -72,6 +79,14 @@ public class DisciplinaModel {
 
     public void setProfessor(ProfessorModel professor) {
         this.professor = professor;
+    }
+
+    public List<AlunoModel> getAlunos() {
+        return alunos;
+    }
+
+    public void setAlunos(List<AlunoModel> alunos) {
+        this.alunos = alunos;
     }
 
 }

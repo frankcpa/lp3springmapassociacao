@@ -13,6 +13,7 @@ import com.ifms.lp3spring.model.ProfessorModel;
 
 import jakarta.validation.Valid;
 
+
 @Controller
 public class ProfessorController {
     @Autowired
@@ -32,6 +33,12 @@ public class ProfessorController {
         professorService.inserir(professor);
         return "redirect:/salvarprofessor";
     }  
+
+    @GetMapping("/manterprofessor")
+    public ModelAndView buscar() {
+        return new ModelAndView("professor/buscarprofessor", "professores", professorService.buscarTodos());
+    }
+    
 
     public ProfessorService getProfessorService() {
         return professorService;

@@ -1,5 +1,7 @@
 package com.ifms.lp3spring.Service;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -19,6 +21,11 @@ public class ProfessorService {
         }
         return "Salvo com Sucesso";
     }
+    
+    public List<ProfessorModel> buscarTodos() {
+        return professorRepository.findAll();
+    }
+
     
     public ProfessorRepository getProfessorRepository() {
         return professorRepository;
