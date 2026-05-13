@@ -13,13 +13,13 @@ public class ProfessorService {
     @Autowired
     private ProfessorRepository professorRepository;
 
-    public String inserir (ProfessorModel professor) {
+    public String salvarEatualizar (ProfessorModel professor) {
         try {
             professorRepository.save(professor);
         } catch (Exception e) {
             return e.getMessage();
         }
-        return "Salvo com Sucesso";
+        return "Operação realizada com Sucesso";
     }
     
     public List<ProfessorModel> buscarTodos() {
@@ -34,7 +34,7 @@ public class ProfessorService {
         }
         return "Removido com Sucesso";
     }
-    
+   
     public ProfessorModel buscarPorId(Long id) {
         return professorRepository.findById(id).orElse(null);
     }

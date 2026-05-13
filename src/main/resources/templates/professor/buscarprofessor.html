@@ -34,7 +34,7 @@
                     <td><span th:text="${#dates.format(professor.dataPosse, 'dd/MM/yyyy')}"></span></td>
                     <td><span th:text="${professor.siape}"></span></td>
                     <td>
-                        <form th:action="@{/salvarprofessor/{id}(id=${professor.idPessoa})}" method="get"
+                        <form th:action="@{/editarprofessor/{id}(id=${professor.idPessoa})}" method="get"
                             onsubmit="return confirm('Deseja realmente editar este professor?');">
                             <button type="submit" class="btn btn-warning">Editar</button>
                         </form>

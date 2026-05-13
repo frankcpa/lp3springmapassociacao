@@ -30,7 +30,7 @@ public class ProfessorController {
             return "professor/salvarprofessor";
         }
         
-        professorService.inserir(professor);
+        professorService.salvarEatualizar(professor);
         return "redirect:/salvarprofessor";
     }  
 
@@ -45,13 +45,23 @@ public class ProfessorController {
         return "redirect:/manterprofessor";
     }
 
-    @GetMapping("/salvarprofessor/{id}")
+    @GetMapping("/editarprofessor/{id}")
     public ModelAndView buscarPorId(@ModelAttribute("id") Long id) {
         ProfessorModel professor = professorService.buscarPorId(id);
         if (professor==null) {
             professor = new ProfessorModel();
         }
-        return new ModelAndView("/professor/salvarprofessor", "professor", new ProfessorModel());
+        return new ModelAndView("/professor/editarprofessor", "professor", professor);
+    }
+
+    @PostMapping("/editarprofessor")
+    public String postEditar(@Valid @ModelAttribute("professor") ProfessorModel professor, BindingResult result) {
+        if (result.hasErrors()) {
+            return "professor/editarprofessor";
+        }
+        
+        professorService.salvarEatualizar(professor);
+        return "redirect:/manterprofessor";
     }
 
     public ProfessorService getProfessorService() {
