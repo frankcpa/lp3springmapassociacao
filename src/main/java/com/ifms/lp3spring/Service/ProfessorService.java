@@ -26,7 +26,19 @@ public class ProfessorService {
         return professorRepository.findAll();
     }
 
+    public String remover(Long id) {
+        try {
+            professorRepository.deleteById(id);
+        } catch (Exception e) {
+            return e.getMessage();
+        }
+        return "Removido com Sucesso";
+    }
     
+    public ProfessorModel buscarPorId(Long id) {
+        return professorRepository.findById(id).orElse(null);
+    }
+
     public ProfessorRepository getProfessorRepository() {
         return professorRepository;
     }
