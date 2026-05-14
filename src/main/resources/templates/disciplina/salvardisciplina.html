@@ -15,37 +15,42 @@
             </div>
         </div>
 
-        <form action="/salvardisciplina" method="post">
+        <form action="/salvardisciplina" method="post" th:object="${disciplina}">
             <div class="row mb-3">
-                <div class="col-md-8">
-                    <label for="inputnome" class="form-label">Nome</label>
-                    <input type="text" class="form-control" id="inputnome" name="nome" aria-describedby="nomeHelp">
+                <div class="col-md-6">
+                    <label for="nome" class="form-label">Nome</label>
+                    <input type="text" class="form-control" th:field="*{nome}" aria-describedby="nomeHelp">
                     <div id="nomeHelp" class="form-text">We'll never share your name with anyone else.</div>
                 </div>
-                <div class="col-md-4">
-                    <label for="inputcargahoraria" class="form-label">Carga Horária</label>
-                    <input type="number" class="form-control" id="inputcargahoraria" name="cargahoraria" aria-describedby="cargahorariaHelp">
+                <div class="col-md-2">
+                    <label for="cargaHoraria" class="form-label">Carga Horária</label>
+                    <input type="number" class="form-control" th:field="*{cargaHoraria}"
+                        aria-describedby="cargahorariaHelp">
                     <div id="cargahorariaHelp" class="form-text">We'll never share your workload with anyone
+                        else.</div>
+                </div>
+                <div class="col-md-4">
+                    <label for="professor" class="form-label">Professor</label>
+                    <select class="form-select" th:field="*{professor}">
+                        <option value="">Selecione um Professor</option>
+                        <option th:each="professor : ${professores}" th:value="${professor.idPessoa}" th:text="${professor.nome}">
+                        </option>
+                    </select>
+                    <div id="professorHelp" class="form-text">We'll never share your professor information with anyone
                         else.</div>
                 </div>
             </div>
             <div class="row mb-3">
                 <div class="col-md-12">
-                    <label for="inputdescricao" class="form-label">Descrição</label>
-                    <textarea class="form-control" id="inputdescricao" name="descricao" rows="3" aria-describedby="descricaoHelp"></textarea>
+                    <label for="descricao" class="form-label">Descrição</label>
+                    <textarea class="form-control" th:field="*{descricao}" rows="3"
+                        aria-describedby="descricaoHelp"></textarea>
                     <div id="descricaoHelp" class="form-text">We'll never share your description with anyone else.</div>
                 </div>
             </div>
-            <div class="row mb-3">
-                <div class="col-md-4">
-                    <label for="inputprofessor" class="form-label">Professor</label>
-                    <input type="text" class="form-control" id="inputprofessor" name="professor" aria-describedby="professorHelp">
-                    <div id="professorHelp" class="form-text">We'll never share your professor information with anyone else.</div>
-                </div>
-            </div>
             <div class="col-md-12 mt-4">
-                    <button type="submit" class="btn btn-primary">Submit</button>
-                </div>
+                <button type="submit" class="btn btn-primary">Submit</button>
+            </div>
         </form>
     </div>
     </div>

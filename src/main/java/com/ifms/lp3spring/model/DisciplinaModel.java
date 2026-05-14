@@ -13,6 +13,8 @@ import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToMany;
 import jakarta.persistence.ManyToOne;
 import jakarta.persistence.Table;
+import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.NotNull;
 
 @Entity
 @Table(name = "disciplina")
@@ -20,10 +22,13 @@ public class DisciplinaModel {
     @Id
     @GeneratedValue
     private Long idDisciplina;
+    @NotBlank
     private String nome;
+    @NotBlank
     private String descricao;
     private int cargaHoraria;
-    
+   
+    @NotNull
     @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name="id_professor")
     @Fetch(FetchMode.JOIN)

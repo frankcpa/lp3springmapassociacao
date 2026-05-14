@@ -39,13 +39,10 @@ public class AlunoModel extends PessoaModel {
 
 
     @ManyToMany
-    @JoinTable(
-    name = "aluno_disciplina",
+    @JoinTable(name = "aluno_disciplina",
     joinColumns = @JoinColumn(name = "aluno_id"),
-    inverseJoinColumns = @JoinColumn(name = "disciplina_id")
-)
-
-private List<DisciplinaModel> disciplinas;
+    inverseJoinColumns = @JoinColumn(name = "disciplina_id"))
+    private List<DisciplinaModel> disciplinas;
     
 
     public AlunoModel() {
